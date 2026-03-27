@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: super-mario
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: gaming-app
+  template:
+    metadata:
+      name: tmp1
+      labels:
+        app: gaming-app
+    spec:
+      containers:
+        - name: super-mario
+          image: abhinagare/abhi-new-repo:v2
+          ports:
+            - containerPort: 80
+~                                                                                                                                                           
+~                                                                                                                                                           
+~                                                                                                                                                           
+~                                      
