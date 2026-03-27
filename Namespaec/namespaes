@@ -1,0 +1,44 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+   name: test
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: std-app
+ namespace: test
+spec:
+ replicas: 2
+ selector:
+  matchLabels:
+   env: dev
+ template:
+  metadata:
+   labels:
+    env: dev
+  spec:
+   containers:
+   - name: con-1
+     image: abhinagare/abhi-new-repo:v2
+     ports:
+      - containerPort: 80
+
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+ name: gaming-app
+ namespace: test
+spec:
+ selector:
+  env: dev
+ ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+ type: NodePort
