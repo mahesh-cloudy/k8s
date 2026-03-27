@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: green-dep
+spec:
+   replicas: 2
+   selector:
+       matchLabels:
+               app: green
+   template:
+       metadata:
+           name: tmp1
+           labels:
+              app: green
+       spec:
+          containers:
+              - name: super-mario
+                image: kaali28/green
+                ports:
+                   - containerPort: 80
+~                                                                    
